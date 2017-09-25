@@ -1,0 +1,222 @@
+%========================================================================================%
+%					NOTE
+%========================================================================================%
+% propably this theme will not compile with standard pdftolatex compiler due to lack of some 
+% fonts used in the theme. It is recomended to compile with XeLaTex instead.
+
+
+%========================================================================================%
+%					DOCUMENT SETUP
+%========================================================================================%
+\documentclass{beamer} 
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{textpos}
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{shapes,arrows, fit, positioning}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{appendixnumberbeamer}
+\usepackage[export]{adjustbox}
+
+\usepackage{graphicx}
+\usepackage{datatool}
+\usepackage{animate}
+
+% For someone using the pgfplot tools
+%\usepackage{pgfplots}
+%\usepgfplotslibrary{dateplot, groupplots}
+%\pgfplotsset{compat=1.14}
+%\usepgfplotslibrary{fillbetween}
+
+
+%for cusotom date
+\usepackage[english]{babel}
+\usepackage[nodayofweek,level]{datetime}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+
+%===================================================================================%
+%				FRONT PAGE
+%===================================================================================%
+\titlegraphic{%
+\hfill%
+\includegraphics[height=1.5cm, valign=c]{logos/ccfd3.png}%
+\hspace{15pt}%
+\includegraphics[height=1.5cm, valign=c]{logos/symbol-PL.pdf}%
+}
+
+\author{\underline{Wojciech Gryglas}, Łukasz Łaniewski-Wołłk, Piotr Szałtys} 
+
+\title{Strategie instrumentacji w oparciu o model zredukowany POD}
+
+\institute{\textbf{Warsaw University of Technology, Faculty of Power and Aeronautical Engineering}}
+
+%\date{\vspace{5pt}\today}
+\date{\vspace{5pt}\formatdate{28}{9}{2017}}
+
+%===================================================================================%
+%				THEME COLORS
+%===================================================================================%
+% specify main colors which are being used by the theme
+\definecolor{bordercolor}{HTML}{002699}
+\definecolor{fillcolor}{HTML}{002699}
+
+% fix theme black color which affects tikz plots
+\definecolor{black}{RGB}{0,0,0}
+
+
+
+
+%===================================================================================%
+%				ACTUAL DOCUMENT CONTENT
+%===================================================================================%
+
+\begin{document}
+
+\maketitle
+
+%force to add logs to the each frame title
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{100mm}(.9\textwidth,-0.9cm)
+\includegraphics[height=0.8cm, valign=c]{logos/ccfd3_white.png}\hspace{10pt}\includegraphics[height=0.78cm, valign=c]{logos/symbol-PL-white.pdf}
+\end{textblock*}}
+
+\begin{frame}{Frame with itemize}
+  \begin{itemize}
+  \setlength\itemsep{2em}
+      \item bla blas
+      \item dos
+      \item quatro
+      \item cinco
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Equation array}
+    \begin{equation*}
+        \begin{array}{l}
+            y_1 = m_A \pm \sigma \\
+            y_2 = m_B \pm \sigma
+        \end{array} 
+        \Rightarrow
+        \begin{array}{l}
+        	m_A = y_1 \pm \sigma \\
+            m_B = y_2 \pm \sigma
+        \end{array}
+    \end{equation*}               
+\end{frame}
+
+\begin{frame} {Matrices}
+    \begin{equation*}
+        \mathbf{y}=\mathbf{X} \mathbf{\beta} + \mathbf{\varepsilon}
+    \end{equation*}
+    
+    where:
+    \begin{equation*}
+        \mathbf{y} = \left[\begin{matrix} y_1 \\ y_2 \end{matrix}\right], 
+        \mathbf{X} = \left[\begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} \right],
+        \mathbf{\beta} = \left[\begin{matrix} m_A \\ m_B \end{matrix}\right], 
+        \mathbf{\varepsilon} = \left[\begin{matrix} \sigma \\ \sigma \end{matrix}\right]
+    \end{equation*}
+    
+\end{frame}
+
+
+\begin{frame} {Using "alert" keyword for highlighting word}
+   
+The matrix \alert{$\mathbf{M}=\mathbf{X}^T\mathbf{X}$} is called \alert{Fisher Information Matrix}.
+
+\end{frame}
+
+
+\begin{frame}{"empth" for cursive highlight and "alert" for color highlight}
+$$ \mathbf{M} = \mathbf{X}^T \cdot \mathbf{X} $$
+  \begin{itemize}
+      \item \alert{\emph{A-optimum} $$\Psi(M) = tr(M^{-1})$$}
+      
+      \item \emph{D-optimum}:  $$\Psi(M) =  log(det(M^{-1}))$$
+      
+      \item \emph{E-optimum}: $$\Psi(M) = \lambda_{max}(M^{-1})$$
+      
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Example block}
+  Some regular text, equation:
+  $$\Psi = tr(M^{-1}) = \frac{x_1^2+x_2^2+2} {(x_1-x_2)^2}$$
+  
+  \hspace{1cm}
+  
+  \metroset{block=fill}
+    
+  \begin{exampleblock}{Verification}
+  	Some text in the body of the block
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tickz algorithm in boxes }
+  \begin{center}
+		% WARNING: before "\input" command (if tikz code is in the file) required to set up color theme for the below sheme, as bellow:
+		% \definecolor{bordercolor}{HTML}{002699}
+		% \definecolor{fillcolor}{HTML}{002699}
+
+		\tikzstyle{block} = [rectangle, draw=bordercolor, fill=fillcolor, text=white, minimum width=4em, text centered, rounded corners, minimum height=4em]
+		\tikzstyle{oval} = [rectangle, draw, rounded corners, dashed, red]
+		\tikzstyle{line} = [draw=bordercolor, ->, ultra thick]
+		\tikzstyle{myarrow}=[line width=1.45mm, draw=bordercolor,-triangle 45, postaction={draw=bordercolor, line width=3mm, shorten >=4mm, -}]
+  
+		\begin{tikzpicture}[scale=1]
+      		\node [block] at (0, 4) (sim) {Symulacja};
+      		\node [block] at (3, 4) (pod){POD};
+      		\node [block] at (6, 4) (basis){Wektory bazowe};
+      		\node [block] at (1, 2) (acrit) {A-kryterium};
+      		\node [block] at (5, 2) (opti) {Optymalizacja};
+      		\node [oval, fit=(acrit) (opti)] {};
+      		\node [rectangle, fill=bordercolor, minimum width=3em, minimum height=1em] at (3, 2){};
+      		\node [rectangle, fill=bordercolor, minimum width=1em, minimum height=3em] at (3, 2){};
+      		\node [block] at (0, 0) (measure) {Pomiar};
+      		\node [block, text width=5em] at (3, 0) (lsm) {Metoda najmniejszych kwadratów};
+      		\node [block] at (6, 0) (recon) {Rekonstrukcja};
+      		\path [myarrow] (sim) -- (pod);
+      		\path [myarrow] (pod) -- (basis);
+      		\path [myarrow, rounded corners=10mm] (basis.east) -- ++(1,0) |- (opti.east);
+      		\path [myarrow, rounded corners=10mm] (acrit.west) -- ++(-2.5,0) |- (measure.west);
+      		\path [myarrow] (measure) -- (lsm);
+      		\path [myarrow] (lsm) -- (recon);
+		\end{tikzpicture}  	
+  \end{center}
+\end{frame}
+
+
+\begin{frame}[standout]
+    Topic transition slide
+\end{frame}
+
+
+\begin{frame}{Acknowledgment}
+\begin{center}
+\includegraphics[height=2cm]{logos/ncbir.png} \\
+Following research was performed as a part of COOPERNIK project founded by The National Centre for Research and Development.
+\end{center}
+\end{frame}
+
+
+
+\appendix
+
+\begin{frame}{Backup slied}
+    Smth to cover your back. This slides are not being numbered nor included in progress bar (thin line below title bar)
+\end{frame}
+
+
+
+\end{document}
