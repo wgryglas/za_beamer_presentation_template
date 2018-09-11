@@ -27,7 +27,15 @@ Metropolis.
   \end{frame}
 \end{document}
 ```
-
+## Fira fonts installation (debian based OS - tested on Ubuntu 18.04)
+```shell
+wget https://github.com/bBoxType/FiraSans/archive/master.zip
+unzip master.zip
+sudo mkdir -p /usr/share/fonts/opentype/fira
+sudo mkdir -p /usr/share/fonts/truetype/fira
+sudo find FiraSans-master/ -name "*.otf" -exec cp {} /usr/share/fonts/opentype/fira/ \;
+sudo find FiraSans-master/ -name "*.ttf" -exec cp {} /usr/share/fonts/truetype/fira/ \;
+```
 ## License
 
 The theme itself is licensed under a [Creative Commons Attribution-ShareAlike

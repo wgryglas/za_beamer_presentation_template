@@ -1,9 +1,10 @@
 %========================================================================================%
 %					NOTE
 %========================================================================================%
-% propably this theme will not compile with standard pdftolatex compiler due to lack of some 
-% fonts used in the theme. It is recomended to compile with XeLaTex instead.
+% Probably this theme will not compile with standard pdftolatex compiler due to lack of some 
+% fonts used in the theme. It is recommended to compile with XeLaTex instead.
 
+% !TEX program = xelatex
 
 %========================================================================================%
 %					DOCUMENT SETUP
@@ -39,7 +40,7 @@
 \usepackage[none]{hyphenat}
 
 
-%for cusotom date
+%for custom date
 \usepackage[english]{babel}
 \usepackage[nodayofweek,level]{datetime}
 
@@ -57,14 +58,14 @@
 \includegraphics[height=1.5cm, valign=c]{logos/symbol-PL.pdf}%
 }
 
-\author{\underline{Wojciech Gryglas}, Łukasz Łaniewski-Wołłk, Piotr Szałtys} 
+\author{\underline{Main author}, Author 2, Author 3} 
 
-\title{Strategie instrumentacji w oparciu o model zredukowany POD}
+\title{Very important title}
 
 \institute{\textbf{Warsaw University of Technology, Faculty of Power and Aeronautical Engineering}}
 
-%\date{\vspace{5pt}\today}
-\date{\vspace{5pt}\formatdate{28}{9}{2017}}
+\date{\vspace{5pt}\today}
+% \date{\vspace{5pt}\formatdate{28}{9}{2017}}
 
 %===================================================================================%
 %				THEME COLORS
@@ -96,8 +97,9 @@
 \begin{frame}{Frame with itemize}
   \begin{itemize}
   \setlength\itemsep{2em}
-      \item bla blas
+      \item uno
       \item dos
+      \item tres
       \item quatro
       \item cinco
   \end{itemize}
@@ -220,7 +222,7 @@ Following research was performed as a part of COOPERNIK project founded by The N
 \appendix
 
 \begin{frame}{Backup slied}
-    Smth to cover your back. This slides are not being numbered nor included in progress bar (thin line below title bar)
+    Something to cover your back. This slides are not being numbered nor included in progress bar (thin line below title bar)
 \end{frame}
 
 
